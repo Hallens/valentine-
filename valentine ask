@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will you be my Valentine &#128150;</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffe6ec;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            max-width: 350px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            margin: 20px 0;
+        }
+
+        .btn {
+            position: relative;
+            height: 120px;
+            margin-top: 20px;
+        }
+
+        button {
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            position: absolute;
+            transition: transform 0.3s ease;
+        }
+
+        #yes {
+            background: #ff4d6d;
+            left: 20px;
+            top: 40px;
+        }
+
+        #no {
+            background: #adb5bd;
+            right: 20px;
+            top: 40px;
+        }
+
+        /* Yes animation */
+        .love {
+            animation: pop 0.6s ease forwards;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.4);
+            }
+
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #ff4d6d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="tenor-gif-embed" data-postid="22885016" data-share-method="host" data-aspect-ratio="1.04918"
+            data-width="100%">
+        </div>
+        <script async src="https://tenor.com/embed.js"></script>
+
+        <h1>Will you be my Valentine? &#128152;</h1>
+
+        <div class="btn">
+            <button id="yes">Yes &#128150;</button>
+            <button id="no">No &#128148;</button>
+        </div>
+
+        <div class="message" id="msg">
+            Yay!! &#128149; I knew it &#128525;
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("no");
+        const yesBtn = document.getElementById("yes");
+        const msg = document.getElementById("msg");
+
+        // No button runs away
+        noBtn.addEventListener("mouseover", () => {
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 100 - 50;
+
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Yes animation
+        yesBtn.addEventListener("click", () => {
+            yesBtn.classList.add("love");
+            msg.style.display = "block";
+        });
+    </script>
+</body>
+
+</html>
