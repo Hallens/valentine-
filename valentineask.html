@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will you be my Valentine &#128150;</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffe6ec;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            max-width: 350px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            margin: 20px 0;
+        }
+
+        .btn {
+            position: relative;
+            height: 120px;
+            margin-top: 20px;
+        }
+
+        button {
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            position: absolute;
+            transition: transform 0.3s ease;
+        }
+
+        #yes {
+            background: #ff4d6d;
+            left: 20px;
+            top: 40px;
+        }
+
+        #no {
+            background: #adb5bd;
+            right: 20px;
+            top: 40px;
+        }
+
+        /* Yes animation */
+        .love {
+            animation: pop 0.6s ease forwards;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.4);
+            }
+
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #ff4d6d;
+            font-weight: bold;
+        }
+
+        .hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            font-size: 22px;
+            color: #ff4d6d;
+            opacity: 0.9;
+            animation: floatUp 2.2s ease-in forwards;
+            text-shadow: 0 4px 10px rgba(255, 77, 109, 0.35);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="container">
+
+        <div class="tenor-gif-embed" data-postid="22885016" data-share-method="host" data-aspect-ratio="1.04918"
+            data-width="100%">
+        </div>
+        <script async src="https://tenor.com/embed.js"></script>
+
+        <h1>Will you be my Valentine? &#128152;</h1>
+
+        <div class="btn">
+            <button id="yes">Yes &#128150;</button>
+            <button id="no">No &#128148;</button>
+        </div>
+
+        <div class="message" id="msg">
+            Yayyyyy!! &#128149; Love you my little piggy &#128525;
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("no");
+        const yesBtn = document.getElementById("yes");
+        const msg = document.getElementById("msg");
+
+        // No button runs away
+        noBtn.addEventListener("mouseover", () => {
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 100 - 50;
+
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Yes animation
+        yesBtn.addEventListener("click", () => {
+            yesBtn.classList.add("love");
+            msg.style.display = "block";
+            launchHearts();
+        });
+
+        function launchHearts() {
+            const hearts = document.getElementById("hearts");
+            const durationMs = 1800;
+            const intervalMs = 120;
+            const endAt = Date.now() + durationMs;
+
+            const timer = setInterval(() => {
+                const heart = document.createElement("span");
+                heart.className = "heart";
+                heart.innerHTML = "&#10084;";
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.fontSize = `${16 + Math.random() * 18}px`;
+                heart.style.animationDuration = `${1.8 + Math.random() * 0.9}s`;
+                hearts.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 2600);
+
+                if (Date.now() > endAt) {
+                    clearInterval(timer);
+                }
+            }, intervalMs);
+        }
+    </script>
+</body>
+
+</html>
